@@ -139,7 +139,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-              <table class="table table-striped" id="table-users">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th style="width: 10px">Foto</th>
@@ -150,11 +150,9 @@
                     <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="table-users">
 
-                  
 
-                  
                   
                 </tbody>
               </table>
@@ -208,7 +206,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">Nome</label>
-                  <input type="text" class="form-control" id="exampleInputName" ="Digite o nome do usuário" name="name">
+                  <input type="text" class="form-control" id="exampleInputName" placeholder="Digite o nome do usuário" name="name">
                 </div>
                 <div class="form-group">
                   <label>Gênero</label>
@@ -230,7 +228,7 @@
                 <div class="form-group">
                   <label for="exampleInputCountry">País</label>
                   <select class="form-control" id="exampleInputCountry" name="country">
-                    <option value="" selected="selected">Selecione um país</option>
+                    <option selected="selected" value="" >Selecione um país</option>
                     <option value="United States">United States</option>
                     <option value="United Kingdom">United Kingdom</option>
                     <option value="Afghanistan">Afghanistan</option>
@@ -475,12 +473,12 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail">E-mail</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Digite o e-mail" name="email">
+                  <label for="exampleInputEmail1">E-mail</label>
+                  <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digite o e-mail" name="email">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword">Senha</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Crie uma senha" name="password">
+                  <label for="exampleInputPassword1">Senha</label>
+                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Crie uma senha" name="password">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Foto</label>
@@ -519,10 +517,8 @@
 
 </div>
 
-<script src="controllers/UserController.js"></script>
 <script src="models/user.js"></script>
-
+<script src="controllers/UserController.js"></script>
 <script src="index.js"></script>
-
 </body>
 </html>

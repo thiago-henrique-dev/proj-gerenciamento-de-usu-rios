@@ -18,36 +18,40 @@ class UserController {
             let values = this.getValues();
 
             this.getPhoto().then(
-                (content) => {
+            (content) => {
 
-                    values.photo = content;
+                values.photo = content
 
-                    this.addLine(values);
+                this.addLine(values)
 
-                }, 
-                (e) => {
-                    console.error(e)
-                }
-            );
-        
-        });
+            }, 
+            (e)=>{
+                console.error(e)
+            }
+        );
 
-    }
- 
+            
+           
+
+            
+    
+            });
+
+        }
 
         getPhoto(){
 
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject)=>{
 
                 let fileReader = new FileReader();
 
                 let elements = [...this.formEl.elements].filter(item=>{
 
                 if(item.name === 'photo'){
-                    return item 
+                    return item;
                 }
 
-            });
+            })
 
             let file = elements[0].files[0]
 
@@ -57,7 +61,7 @@ class UserController {
 
             };
 
-            fileReader.onerror = (e)=>{
+            fileReader.onerror = (e) => { 
                 reject(e)
             }
 
@@ -106,7 +110,7 @@ class UserController {
 
     addLine(dataUser, tableId){
         
-       console.log(dataUser)
+       
         
         this.tableEl.innerHTML = `
         <tr>
