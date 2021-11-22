@@ -2,7 +2,7 @@ var fields = document.querySelectorAll("#form-user-create [name]");
 var user = {};
 
 function addLine(dataUser){
-
+    console.log('marcelo')
    console.log(dataUser)
 
     document.getElementById("table-users").innerHTML = `
