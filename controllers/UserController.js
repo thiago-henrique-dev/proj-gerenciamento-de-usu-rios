@@ -21,6 +21,8 @@ class UserController {
 
             let values = this.getValues();
 
+            if (!values) return false;
+
             this.getPhoto().then(
             (content) => {
 
@@ -155,9 +157,18 @@ class UserController {
        
         
         this.tableEl.appendChild(tr)
+
+        this.updateCount();
     
         }
-    
+        
+        updateCount(){
+
+            [...this.tableEl.children].forEach(tr =>{
+                
+            })
+
+        }
         
 
 
