@@ -15,7 +15,7 @@ class UserController {
 
             event.preventDefault();
 
-            let btn = this.formEl.querySelector("[type=submit")
+            let btn = this.formEl.querySelector("[type=submit]")
 
             btn.disabled = true;
 
@@ -100,7 +100,7 @@ class UserController {
                     isValid = false
                 }
     
-                if (field.name == "gender") {
+                if (field.name === "gender") {
         
                     if (field.checked) {
                         user[field.name] = field.value
@@ -136,9 +136,11 @@ class UserController {
         }
     
 
-    addLine(dataUser, tableId){
+    addLine(dataUser){
 
         let tr = document.createElement('tr');
+
+        tr.dataset.user = JSON.stringify(dataUser);
 
         tr.innerHTML =  `
         
@@ -162,11 +164,23 @@ class UserController {
     
         }
         
-        updateCount(){
+        updateCount() {
 
-            [...this.tableEl.children].forEach(tr =>{
-                
+            let numberUsers = 0;
+            let numberAdmin = 0;
+    
+            [...this.tableEl.children].forEach(tr => {
+    
+                numberUsers++;
+    
+                let user = JSON.parse(tr.dataset.user);
+    
+                if (user._admin) numberAdmin++;
             })
+    
+            document.querySelector("#number-users").innerHTML = numberUsers;
+            document.querySelector("#number-users-admin").innerHTML = numberAdmin;
+        
 
         }
         
