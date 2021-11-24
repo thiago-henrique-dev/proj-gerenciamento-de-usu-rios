@@ -106,7 +106,7 @@ class User {
 
                 if (u._id === this._id) {
 
-                    u = this;
+                    u = this
 
                 }
 
