@@ -8,7 +8,7 @@ class UserController {
 
         this.onSubmit();
         this.onEdit();
-        this.selectAlL();
+        this.selectAlL()
 
     }
 
