@@ -8,7 +8,7 @@ class UserController {
 
         this.onSubmit();
         this.onEdit();
-        this.selectAlL()
+        this.selectAll()
 
     }
 
@@ -51,7 +51,9 @@ class UserController {
 
                     user.loadFromJSON(result)
 
-                    this.getTr(user, tr)
+                    user.save();
+
+                    this.getTr(user, tr);
 
                     this.updateCount();
 
@@ -90,7 +92,7 @@ class UserController {
 
                     values.photo = content;
 
-                    this.insert(values);
+                    values.save()
 
                     this.addLine(values);
 
@@ -163,7 +165,7 @@ class UserController {
             if (field.name === "gender") {
     
                 if (field.checked) {
-                    user[field.name] = field.value
+                    user[field.name] = field.value;
                 }
     
             } else if(field.name == "admin") {
@@ -209,7 +211,7 @@ class UserController {
             return users;
     }
     
-    selectAlL(){
+    selectAll(){
 
         let users = this.getUsersStorage();
 
@@ -225,18 +227,14 @@ class UserController {
 
     }
 
-    insert(data){
 
-        let users = this.getUsersStorage();
+    addLine(dataUser) {
 
+        let tr = this.getTr(dataUser);
 
-        
+        this.tableEl.appendChild(tr);
 
-        users.push(data);
-
-
-        //sessionStorage.setItem("users", JSON.stringify(users))
-        localStorage.setItem("users", JSON.stringify(users))
+        this.updateCount();
 
     }
 
@@ -267,19 +265,11 @@ class UserController {
         return tr
     }
 
-    addLine(dataUser) {
-
-        let tr = this.getTr(dataUser);
-
-        this.tableEl.appendChild(tr);
-
-        this.updateCount();
-
-    }
+    
 
     addEventsTr(tr) {
 
-        tr.querySelector(".btn-delete").addEventListener("click", e => {
+        tr.querySelector(".btn-delete").addEventListener("click", (e) => {
 
             if(confirm("Deseja realmente excluir°")){
 
