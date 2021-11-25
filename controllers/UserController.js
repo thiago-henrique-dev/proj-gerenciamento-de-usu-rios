@@ -8,7 +8,7 @@ class UserController {
 
         this.onSubmit();
         this.onEdit();
-        this.selectAll()
+        this.selectAll();
 
     }
 
@@ -215,7 +215,7 @@ class UserController {
 
         let users = this.getUsersStorage();
 
-        [users].forEach(dataUser =>{
+        users.forEach(dataUser =>{
 
            let user = new User();
 
@@ -247,17 +247,15 @@ class UserController {
 
 
         tr.innerHTML = `
-            <tr>
-                <td><img src=${dataUser.photo} class="img-circle img-sm"></td>
-                <td>${dataUser.name}</td>
-                <td>${dataUser.email}</td>
-                <td>${(dataUser.admin) ? 'Sim' : 'Não'}</td>
-                <td>${Utils.dateFormat(dataUser.register)}</td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat">Editar</button>
-                    <button type="button" class="btn btn-danger btn-delete btn-xs btn-flat">Excluir</button>
-                </td>
-            </tr>
+            <td><img src=${dataUser.photo} class="img-circle img-sm"></td>
+            <td>${dataUser.name}</td>
+            <td>${dataUser.email}</td>
+            <td>${(dataUser.admin) ? 'Sim' : 'Não'}</td>
+            <td>${Utils.dateFormat(dataUser.register)}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat">Editar</button>
+                <button type="button" class="btn btn-danger btn-delete btn-xs btn-flat">Excluir</button>
+            </td>
         `;
 
         this.addEventsTr(tr);
@@ -271,7 +269,13 @@ class UserController {
 
         tr.querySelector(".btn-delete").addEventListener("click", (e) => {
 
-            if(confirm("Deseja realmente excluir°")){
+            if(confirm("Deseja relamente excluir?")) {
+
+                let user = new User();
+
+                user.loadFromJSON(JSON.parse(tr.dataset.user));
+
+                user.remove();
 
                 tr.remove();
 
